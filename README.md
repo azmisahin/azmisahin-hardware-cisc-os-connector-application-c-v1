@@ -1,6 +1,5 @@
 # Introduction 
-azmisahin-$groupName-$typeName-$projectName-$productName-$languageName
-[com.azmisahin.$groupName.$typeName.$projectName.$productName.$languageName] Entry-level workspace for azmisahin.
+emulation of risc-based architectures with a cisc architecture.
 
 # Getting Started
 TO DO: Things to do when getting started on this project.
