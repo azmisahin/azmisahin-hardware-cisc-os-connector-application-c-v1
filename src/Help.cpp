@@ -29,10 +29,12 @@ void Help::Display(int value)
 string Help::Welcome()
 {
     return "\n\
-    Connector hostName port\n\
-    \n\
-    -- example : \n\
-    \n\
-    Connector 127.0.0.1 50001\n\
-    ";
+Usage\n\
+\n\
+    connector <hostname> <port>\n\
+\n\
+You can access an active remote server and its port.\n\
+\n\
+Run 'connector --help' for more information.\n\
+";
 }
