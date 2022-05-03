@@ -31,7 +31,15 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     Help help;
+    // should be initalize
     assert(&help != NULL);
+
+    char const *params[2] = {"1", "2"};
+    Parameter parameter = help.GetParameter(params);
+    // the first parameter should be to hostname
+    assert(parameter.HostName == params[1]);
+    // the second parameter should be the port number
+    assert(parameter.PortNumber == params[2]);
 
     cout << "\n💯  All assert passed!" << endl;
     return 0;

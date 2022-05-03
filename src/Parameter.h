@@ -13,7 +13,7 @@ private:
 public:
     Parameter(/* args */);
     string HostName;
-    int Port;
+    string PortNumber;
     ~Parameter();
 };
 

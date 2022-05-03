@@ -31,7 +31,7 @@ string Help::Welcome()
     return "\n\
 Usage\n\
 \n\
-    connector <hostname> <port>\n\
+    connector <HostName> <PortNumber>\n\
 \n\
 You can access an active remote server and its port.\n\
 \n\
@@ -41,4 +41,8 @@ Run 'connector --help' for more information.\n\
 
 Parameter Help::GetParameter(char const *argv[])
 {
+    Parameter params;
+    params.HostName = argv[1];
+    params.PortNumber = argv[2];
+    return params;
 }
