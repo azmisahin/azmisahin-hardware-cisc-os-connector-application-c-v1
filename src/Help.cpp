@@ -38,3 +38,7 @@ You can access an active remote server and its port.\n\
 Run 'connector --help' for more information.\n\
 ";
 }
+
+Parameter Help::GetParameter(char const *argv[])
+{
+}

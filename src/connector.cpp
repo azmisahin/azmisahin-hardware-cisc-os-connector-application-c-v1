@@ -12,6 +12,7 @@
  * Module dependencies
  */
 #include "Help.cpp"
+#include "Parameter.h"
 
 /**
  * @brief Connector test
@@ -29,6 +30,7 @@ int main(int argc, char const *argv[])
     }
     else
     {
+        Parameter parameter = help.GetParameter(argv);
     }
     return 0;
 }

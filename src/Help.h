@@ -15,6 +15,7 @@
  * module dependencies
  */
 #include <string>
+#include "Parameter.h"
 using namespace std;
 
 class Help
@@ -26,6 +27,7 @@ public:
     void Display(string value);
     void Display(int value);
     string Welcome();
+    Parameter GetParameter(char const *argv[]);
     ~Help();
 };
 
