@@ -23,5 +23,9 @@
  */
 bool Socket::Connect(IpEndPoint ipEndPoint)
 {
-    return false;
+    // socket is active?
+    socks[sock] = sock > 0;
+
+    // return active socket
+    return socks[sock];
 }

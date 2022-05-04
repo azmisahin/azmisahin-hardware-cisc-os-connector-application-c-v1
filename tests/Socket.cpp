@@ -42,10 +42,12 @@ int main(int argc, char const *argv[])
     // the second parameter should be the port number
     assert(parameter.PortNumber == params[2]);
 
+    // create socket
     Socket socket;
     // should be initalize
     assert(&socket != NULL);
 
+    // connect socket
     bool status = socket.Connect(parameter);
     // should be initalize
     assert(status == true);
