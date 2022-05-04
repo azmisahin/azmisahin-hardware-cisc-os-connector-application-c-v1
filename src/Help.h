@@ -15,26 +15,72 @@
  * module dependencies
  */
 #include <string>
-#include "Parameter.h"
+#include "IpEndPoint.h"
 using namespace std;
 
+/**
+ * @brief main module command helper.
+ *
+ */
 class Help
 {
 private:
     /* data */
 public:
+    /**
+     * @brief
+     *
+     */
     Help(/* args */);
+
+    /**
+     * @brief Displays the string in the standard output stream.
+     *
+     * @param value string
+     */
     void Display(string value);
+
+    /**
+     * @brief Displays numbers in the standard output stream.
+     *
+     * @param value int
+     */
     void Display(int value);
+
+    /**
+     * @brief Displays the user assistant.
+     *
+     * @return string
+     */
     string Welcome();
-    Parameter GetParameter(char const *argv[]);
+
+    /**
+     * @brief Converts parameters to a network endpoint representation.
+     *
+     * @param argv
+     * @return IpEndPoint
+     */
+    IpEndPoint GetParameter(char const *argv[]);
+
+    /**
+     * @brief Destroy the Help object
+     *
+     */
     ~Help();
 };
 
+/**
+ * @brief 
+ * 
+ */
 Help::Help(/* args */)
 {
 }
 
+/**
+ * @brief Destroy the Help:: Help object
+ * 
+ */
 Help::~Help()
 {
 }

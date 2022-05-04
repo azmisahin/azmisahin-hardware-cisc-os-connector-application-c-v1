@@ -1,7 +1,7 @@
 /**
- * @file Help.test.cpp
+ * @file Socket.test.cpp
  * @author Azmi ŞAHİN (azmisahin@outlook.com)
- * @brief emulation of risc-based architectures with a cisc architecture.
+ * @brief managed interface for network access.
  * @version 0.1
  * @date 2022-05-02
  *
@@ -20,9 +20,10 @@ using namespace std;
  * @brief Test dependencies
  */
 #include "../src/Help.cpp"
+#include "../src/Socket.cpp"
 
 /**
- * @brief Connector test
+ * @brief Socket test
  *
  * @param argc argument count
  * @param argv arguments
@@ -34,12 +35,20 @@ int main(int argc, char const *argv[])
     // should be initalize
     assert(&help != NULL);
 
-    char const *params[2] = {"1", "2"};
+    char const *params[2] = {"127.0.0.1", "50001"};
     IpEndPoint parameter = help.GetParameter(params);
     // the first parameter should be to hostname
     assert(parameter.HostName == params[1]);
     // the second parameter should be the port number
     assert(parameter.PortNumber == params[2]);
+
+    Socket socket;
+    // should be initalize
+    assert(&socket != NULL);
+
+    bool status = socket.Connect(parameter);
+    // should be initalize
+    assert(status == true);
 
     cout << "\n💯  All assert passed!" << endl;
     return 0;

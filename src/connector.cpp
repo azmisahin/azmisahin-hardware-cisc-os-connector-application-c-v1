@@ -12,7 +12,7 @@
  * Module dependencies
  */
 #include "Help.cpp"
-#include "Parameter.h"
+#include "IpEndPoint.h"
 
 /**
  * @brief Connector test
@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
     }
     else
     {
-        Parameter parameter = help.GetParameter(argv);
+        IpEndPoint parameter = help.GetParameter(argv);
     }
     return 0;
 }

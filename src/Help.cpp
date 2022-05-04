@@ -16,16 +16,31 @@
 #include <iostream>
 using namespace std;
 
+/**
+ * @brief Displays the string in the standard output stream.
+ *
+ * @param value string
+ */
 void Help::Display(string value)
 {
     cout << value << endl;
 }
 
+/**
+ * @brief Displays numbers in the standard output stream.
+ *
+ * @param value int
+ */
 void Help::Display(int value)
 {
     cout << value << endl;
 }
 
+/**
+ * @brief Displays the user assistant.
+ *
+ * @return string
+ */
 string Help::Welcome()
 {
     return "\n\
@@ -39,9 +54,15 @@ Run 'connector --help' for more information.\n\
 ";
 }
 
-Parameter Help::GetParameter(char const *argv[])
+/**
+ * @brief Converts parameters to a network endpoint representation.
+ *
+ * @param argv
+ * @return IpEndPoint
+ */
+IpEndPoint Help::GetParameter(char const *argv[])
 {
-    Parameter params;
+    IpEndPoint params;
     params.HostName = argv[1];
     params.PortNumber = argv[2];
     return params;
