@@ -113,3 +113,4 @@ screens
 .deployment
 .vscode
 .DS_Store
+Gemfile.lock
