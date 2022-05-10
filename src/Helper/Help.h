@@ -91,3 +91,20 @@ void Help::Display(int value)
 {
     cout << value << endl;
 }
+
+/**
+ * @brief Displays the user assistant.
+ *
+ */
+string Help::Usage()
+{
+    return "\n\
+Usage\n\
+\n\
+    connector <HostName> <PortNumber> <Message>\n\
+\n\
+You can access an active remote server and its port.\n\
+\n\
+Run 'connector --help' for more information.\n\
+";
+}
