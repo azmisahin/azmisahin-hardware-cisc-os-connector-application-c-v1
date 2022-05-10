@@ -74,10 +74,20 @@ Help::~Help()
 #include <iostream>
 /**
  * @brief Displays the message on th econsole.
- * 
+ *
  * @param string value
  */
 void Help::Display(string value)
+{
+    cout << value << endl;
+}
+
+/**
+ * @brief Displays the message on the console.
+ *
+ * @param int value
+ */
+void Help::Display(int value)
 {
     cout << value << endl;
 }
