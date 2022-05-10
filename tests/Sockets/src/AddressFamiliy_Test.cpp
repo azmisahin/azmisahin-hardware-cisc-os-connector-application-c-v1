@@ -13,21 +13,19 @@
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE IpAdressTest
 #include <boost/test/unit_test.hpp>
+#include "AddressFamiliy_Spec.cpp"
 
 BOOST_AUTO_TEST_SUITE(AddressFamiliy_Suite)
+
 BOOST_AUTO_TEST_CASE(Unix)
 {
-    int expected = 1;
-    int actual = AddressFamiliy::Unix;
-
-    BOOST_CHECK(actual != expected);
+    bool actual = UnixSpec();
+    BOOST_CHECK(actual);
 }
 
 BOOST_AUTO_TEST_CASE(InterNetwork)
 {
-    int expected = 1;
-    int actual = AddressFamiliy::InterNetwork;
-
-    BOOST_CHECK(actual != expected);
+    bool actual = InterNetworkSpec();
+    BOOST_CHECK(actual);
 }
 BOOST_AUTO_TEST_SUITE_END()
