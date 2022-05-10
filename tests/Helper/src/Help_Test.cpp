@@ -13,35 +13,31 @@
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE IpAdressTest
 #include <boost/test/unit_test.hpp>
+#include "Help_Spec.cpp"
 
 BOOST_AUTO_TEST_SUITE(Help_Suite)
 BOOST_AUTO_TEST_CASE(Constractor)
 {
-    Help instance;
-
-    Help actual = instance;
-
+    bool actual = ConstractorSpec();
     BOOST_CHECK(actual);
 }
 
 BOOST_AUTO_TEST_CASE(DisplayString)
 {
-    char *_parameters = (char *)"1";
-    Help instance;
-    instance.Display(_parameters);
+    bool actual = DisplayStringSpec();
+    BOOST_CHECK(actual);
 }
 
 BOOST_AUTO_TEST_CASE(DisplayInt)
 {
-    int _parameters = 1;
-    Help instance;
-    instance.Display(_parameters);
+    bool actual = DisplayIntSpec();
+    BOOST_CHECK(actual);
 }
 
 BOOST_AUTO_TEST_CASE(Usage)
 {
-    Help instance;
-    instance.Usage();
+    bool actual = UsageSpec();
+    BOOST_CHECK(actual);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

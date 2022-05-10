@@ -70,3 +70,14 @@ Help::~Help()
 }
 
 #endif
+
+#include <iostream>
+/**
+ * @brief Displays the message on th econsole.
+ * 
+ * @param string value
+ */
+void Help::Display(string value)
+{
+    cout << value << endl;
+}
