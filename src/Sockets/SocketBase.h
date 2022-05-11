@@ -69,6 +69,12 @@ public:
      * @brief
      *
      */
+    SocketBase();
+
+    /**
+     * @brief
+     *
+     */
     SocketBase(int addressFamiliy, int socketType, int protocolType);
 
     /**
@@ -100,66 +106,42 @@ public:
      *
      * @param int
      */
-    int Id()
-    {
-        return _id;
-    }
+    int Id();
 
     /**
      * @brief
      */
-    int AddressFamiliy()
-    {
-        return _addressFamiliy;
-    }
+    int AddressFamiliy();
 
     /**
      * @brief
      */
-    int SocketType()
-    {
-        return _socketType;
-    }
+    int SocketType();
 
     /**
      * @brief
      */
-    int ProtocolType()
-    {
-        return _protocolType;
-    }
+    int ProtocolType();
 
     /**
      * @brief
      */
-    char *HostName()
-    {
-        return _hostName;
-    }
+    char *HostName();
 
     /**
      * @brief
      */
-    int PortNumber()
-    {
-        return _portNumber;
-    }
+    int PortNumber();
 
     /**
      * @brief
      */
-    char *Message()
-    {
-        return _message;
-    }
+    char *Message();
 
     /**
      * @brief
      */
-    char *Data()
-    {
-        return _data;
-    }
+    char *Data();
 
     /**
      * @brief Destroy the Socket object
@@ -168,3 +150,122 @@ public:
     ~SocketBase();
 };
 #endif
+
+/**
+ * @brief
+ *
+ */
+SocketBase::SocketBase() {}
+
+/**
+ * @brief
+ *
+ */
+SocketBase::SocketBase(int addressFamiliy, int socketType, int protocolType)
+{
+}
+
+/**
+ * @brief Establishes a connection to a remote host.
+ *
+ * @param ipEndPoint
+ * @return true
+ * @return false
+ */
+bool SocketBase::Connect(char *hostName, int portNumber)
+{
+    return 0;
+}
+
+/**
+ * @brief Send a message
+ *
+ * @param char*
+ * @return int
+ */
+int SocketBase::Send(const char *message)
+{
+    return 0;
+}
+
+/**
+ * @brief Receive message
+ *
+ * @param int
+ */
+int SocketBase::Receive()
+{
+    return 0;
+}
+
+/**
+ * @brief Socket id
+ *
+ * @param int
+ */
+int SocketBase::Id()
+{
+    return _id;
+}
+
+/**
+ * @brief
+ */
+int SocketBase::AddressFamiliy()
+{
+    return _addressFamiliy;
+}
+
+/**
+ * @brief
+ */
+int SocketBase::SocketType()
+{
+    return _socketType;
+}
+
+/**
+ * @brief
+ */
+int SocketBase::ProtocolType()
+{
+    return _protocolType;
+}
+
+/**
+ * @brief
+ */
+char *SocketBase::HostName()
+{
+    return _hostName;
+}
+
+/**
+ * @brief
+ */
+int SocketBase::PortNumber()
+{
+    return _portNumber;
+}
+
+/**
+ * @brief
+ */
+char *SocketBase::Message()
+{
+    return _message;
+}
+
+/**
+ * @brief
+ */
+char *SocketBase::Data()
+{
+    return _data;
+}
+
+/**
+ * @brief Destroy the Socket object
+ *
+ */
+SocketBase::~SocketBase() {}
