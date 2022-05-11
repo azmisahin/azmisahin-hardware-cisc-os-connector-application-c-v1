@@ -29,6 +29,10 @@ private:
 public:
     /**
      * @brief
+     */
+    IpEndPoint();
+    /**
+     * @brief
      *
      */
     IpEndPoint(IpAddress ipAddress, int portNumber);
@@ -51,6 +55,13 @@ public:
      */
     int PortNumber();
 };
+
+/**
+ * @brief
+ */
+IpEndPoint::IpEndPoint()
+{
+}
 
 /**
  * @brief

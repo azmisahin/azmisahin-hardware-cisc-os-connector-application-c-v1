@@ -28,6 +28,11 @@ private:
 
 public:
     /**
+     * @brief
+     */
+    IpAddress();
+
+    /**
      * @param value char
      */
     IpAddress(char *value);
@@ -41,6 +46,13 @@ public:
      */
     string ToString();
 };
+
+/**
+ * @brief
+ */
+IpAddress::IpAddress()
+{
+}
 
 /**
  * @brief
@@ -60,6 +72,7 @@ IpAddress::~IpAddress()
 {
 }
 #endif
-string IpAddress::ToString(){
+string IpAddress::ToString()
+{
     return _number;
 }
