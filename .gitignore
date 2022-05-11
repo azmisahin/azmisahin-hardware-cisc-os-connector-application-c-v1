@@ -114,3 +114,5 @@ screens
 .vscode
 .DS_Store
 Gemfile.lock
+*.out
+*.exe

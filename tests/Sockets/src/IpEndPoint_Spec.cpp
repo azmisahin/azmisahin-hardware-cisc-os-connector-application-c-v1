@@ -32,7 +32,7 @@ bool IpEndPoint_AddressSpec_ShouldNotEqual()
     string expected = ipAddress.ToString();
 
     // assert
-    return CHECK(actual != expected, __FUNCTION__);
+    return CHECK(actual == expected, __FUNCTION__);
 }
 
 bool IpEndPoint_AddressSpec_ShouldEqual()
