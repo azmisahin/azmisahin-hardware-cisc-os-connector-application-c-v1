@@ -10,18 +10,33 @@
  */
 
 #include "../../../src/Sockets/IpAddress.h"
+#include "../../TestTool.h"
 
 bool ToStringSpec()
+{
+    char *_parameters = (char *)"127.0.0.1";
+    IpAddress instance(_parameters);
+    string expected = "127.0.0.1";
+    string actual = instance.ToString();
+
+    // assert
+    return CHECK(expected == actual, __FUNCTION__);
+}
+
+bool ToStringSpec_ShouldNotEqual()
 {
     char *_parameters = (char *)"1";
     IpAddress instance(_parameters);
     string expected = "";
     string actual = instance.ToString();
-    return expected != actual;
+
+    // assert
+    return CHECK(expected != actual, __FUNCTION__);
 }
 
 int main()
 {
     ToStringSpec();
+    ToStringSpec_ShouldNotEqual();
     return 0;
 }

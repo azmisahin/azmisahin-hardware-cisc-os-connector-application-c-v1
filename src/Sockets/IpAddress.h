@@ -17,6 +17,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
+
 /**
  * @brief Represents a network endpoint as an IP address
  *
@@ -61,7 +62,28 @@ IpAddress::IpAddress()
  */
 IpAddress::IpAddress(char *value)
 {
-    _number = value;
+    // define ip address octet
+    unsigned char octet[4];
+
+    // split address octet
+    sscanf(value, "%u.%u.%u.%u", &octet[0], &octet[1], &octet[2], &octet[3]);
+
+    // convert integer
+    unsigned int number =
+        1u * octet[0] << 24 | 1u * octet[1] << 16 | 1u * octet[2] << 8 | octet[3];
+
+    // define string
+    char *result = new char[4];
+
+    // transform string
+    sprintf(result, "%d.%d.%d.%d",
+            (number >> 24) & 0xFF,
+            (number >> 16) & 0xFF,
+            (number >> 8) & 0xFF,
+            (number)&0xFF);
+
+    // set internal number
+    _number = result;
 }
 
 /**
