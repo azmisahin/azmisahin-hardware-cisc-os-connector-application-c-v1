@@ -20,7 +20,7 @@ bool UnixSpec()
 
 bool InterNetworkSpec()
 {
-    int expected = 1;
+    int expected = 2;
     int actual = AddressFamiliy::InterNetwork;
     return true;
 }
