@@ -98,6 +98,17 @@ public:
     int Send(const char *message);
 
     /**
+     * @brief shutdown the connection
+     *
+     * @param how
+     * SHUT_RD = No more receptions;
+     * SHUT_WR = No more transmissions;
+     * SHUT_RDWR = No more receptions or transmissions.
+     * @return int Returns 0 on success, -1 for errors.
+     */
+    int Down(int how);
+
+    /**
      * @brief Receive message
      *
      * @param int
@@ -228,6 +239,23 @@ int SocketBase::Send(const char *message)
 {
     // string send
     return send(_id, message, strlen(message), 0);
+}
+
+/**
+ * @brief shutdown the connection
+ *
+ * @param how
+ *
+ *  0 : No more receptions;
+ *  1 : No more transmissions
+ *  2 : No more receptions or transmissions.
+ *
+ * @return int Returns 0 on success, -1 for errors.
+ */
+int SocketBase::Down(int how)
+{
+    // string send
+    return shutdown(_id, how);
 }
 
 /**

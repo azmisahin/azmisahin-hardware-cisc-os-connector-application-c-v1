@@ -90,6 +90,24 @@ bool SendSpec()
     return CHECK(actual == expected, __FUNCTION__);
 }
 
+bool DownSpec()
+{
+    SocketBase instance(2, 1, 0);
+    char *hostName = (char *)IP;
+    int portNumber = PORT;
+
+    char *message = (char *)"00000001";
+
+    instance.Connect(hostName, portNumber);
+    instance.Send(message);
+
+    bool expected = 0;
+    bool actual = instance.Down(0);
+
+    // assert
+    return CHECK(actual == expected, __FUNCTION__);
+}
+
 bool ReceiveSpec()
 {
     SocketBase instance(2, 1, 0);
@@ -120,6 +138,7 @@ bool IdSpec()
     // assert
     return CHECK(actual == expected, __FUNCTION__);
 }
+
 int main()
 {
     Constractor_AddressFamiliySpec();
@@ -128,6 +147,7 @@ int main()
     CreateSpec();
     ConnectSpec();
     SendSpec();
+    DownSpec();
     ReceiveSpec();
     IdSpec();
 
