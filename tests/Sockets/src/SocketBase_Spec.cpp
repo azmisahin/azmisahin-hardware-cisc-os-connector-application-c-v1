@@ -119,11 +119,11 @@ bool ReceiveSpec()
     instance.Connect(hostName, portNumber);
     instance.Send(message);
 
-    bool expected = 1;
+    bool expected = 0;
     bool actual = instance.Receive();
 
     // assert
-    return CHECK(actual == expected, __FUNCTION__);
+    return CHECK(actual > expected, __FUNCTION__);
 }
 
 bool IdSpec()

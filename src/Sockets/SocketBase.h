@@ -261,11 +261,20 @@ int SocketBase::Down(int how)
 /**
  * @brief Receive message
  *
- * @param int
+ * @param int byte length or status
  */
 int SocketBase::Receive()
 {
-    return 0;
+
+    // result > 0 byte received
+    // result == 0 connection error
+    int result;
+
+    // read message remote socket
+    result = recv(_id, _data, 512, 0);
+
+    // byte length or status
+    return result;
 }
 
 /**
