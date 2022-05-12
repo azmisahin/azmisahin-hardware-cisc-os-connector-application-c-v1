@@ -18,6 +18,7 @@
 #include "SocketStatus.h"
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <string.h>
 
 /**
  * @brief managed interface for network access.
@@ -225,7 +226,8 @@ SocketStatus SocketBase::Connect(char *hostName, int portNumber)
  */
 int SocketBase::Send(const char *message)
 {
-    return 0;
+    // string send
+    return send(_id, message, strlen(message), 0);
 }
 
 /**
