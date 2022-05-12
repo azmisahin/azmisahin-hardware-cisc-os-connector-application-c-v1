@@ -68,6 +68,11 @@ private:
      */
     int _id;
 
+    /**
+     * Default buffer length
+     */
+    int _bufferLength = 512;
+
 public:
     /**
      * @brief
@@ -95,7 +100,7 @@ public:
      * @param char*
      * @return int
      */
-    int Send(const char *message);
+    int Send(char *message);
 
     /**
      * @brief shutdown the connection
@@ -235,8 +240,11 @@ SocketStatus SocketBase::Connect(char *hostName, int portNumber)
  * @param char*
  * @return int
  */
-int SocketBase::Send(const char *message)
+int SocketBase::Send(char *message)
 {
+    // save message
+    _message = message;
+
     // string send
     return send(_id, message, strlen(message), 0);
 }
@@ -271,7 +279,7 @@ int SocketBase::Receive()
     int result;
 
     // read message remote socket
-    result = recv(_id, _data, 512, 0);
+    result = recv(_id, _data, _bufferLength, 0);
 
     // byte length or status
     return result;
