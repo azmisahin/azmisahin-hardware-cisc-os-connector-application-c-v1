@@ -15,7 +15,9 @@
 /**
  * module dependencies
  */
+#include "SocketStatus.h"
 #include <sys/socket.h>
+#include <arpa/inet.h>
 
 /**
  * @brief managed interface for network access.
@@ -82,10 +84,9 @@ public:
      * @brief Establishes a connection to a remote host.
      *
      * @param ipEndPoint
-     * @return true
-     * @return false
+     * @return SocketStatus
      */
-    bool Connect(char *hostName, int portNumber);
+    SocketStatus Connect(char *hostName, int portNumber);
 
     /**
      * @brief Send a message
@@ -179,11 +180,41 @@ SocketBase::SocketBase(int addressFamiliy, int socketType, int protocolType)
  * @return true
  * @return false
  */
-bool SocketBase::Connect(char *hostName, int portNumber)
+SocketStatus SocketBase::Connect(char *hostName, int portNumber)
 {
-    bool result = false;
+    SocketStatus socketStatus = SocketStatus::Initialize;
 
-    return result;
+    // arpa inet
+    struct sockaddr_in _remote;
+
+    // remote server initialize
+    _remote.sin_family = _addressFamiliy;
+    _remote.sin_port = htons(portNumber);
+    // socketStatus = SocketStatus::InitializeError;
+
+    // convert
+    int convertSocketStatus = inet_pton(_addressFamiliy, hostName, &_remote.sin_addr);
+    if (convertSocketStatus <= 0)
+    {
+        // address not supported
+        socketStatus = SocketStatus::ConvertError;
+        return socketStatus;
+    }
+
+    // socket is connect?
+    int connectionStatus = connect(_id, (struct sockaddr *)&_remote, sizeof(_remote));
+    if (connectionStatus < 0)
+    {
+        // connection failed
+        socketStatus = SocketStatus::ConnectionError;
+        return socketStatus;
+    }
+    else
+    {
+        // if 0 connected but not connected local test
+        socketStatus = SocketStatus::Connected;
+    }
+    return socketStatus;
 }
 
 /**

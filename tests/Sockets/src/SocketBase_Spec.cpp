@@ -66,8 +66,8 @@ bool ConnectSpec()
     char *hostName = (char *)IP;
     int portNumber = PORT;
 
-    bool expected = true;
-    bool actual = instance.Connect(hostName, portNumber);
+    SocketStatus expected = SocketStatus::Connected;
+    SocketStatus actual = instance.Connect(hostName, portNumber);
 
     // assert
     return CHECK(actual == expected, __FUNCTION__);
