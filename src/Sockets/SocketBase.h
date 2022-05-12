@@ -15,6 +15,7 @@
 /**
  * module dependencies
  */
+#include <sys/socket.h>
 
 /**
  * @brief managed interface for network access.
@@ -163,6 +164,12 @@ SocketBase::SocketBase() {}
  */
 SocketBase::SocketBase(int addressFamiliy, int socketType, int protocolType)
 {
+    _addressFamiliy = addressFamiliy;
+    _socketType = socketType;
+    _protocolType = protocolType;
+
+    // create a new socket
+    _id = socket(addressFamiliy, socketType, protocolType);
 }
 
 /**
@@ -174,7 +181,9 @@ SocketBase::SocketBase(int addressFamiliy, int socketType, int protocolType)
  */
 bool SocketBase::Connect(char *hostName, int portNumber)
 {
-    return 0;
+    bool result = false;
+
+    return result;
 }
 
 /**
