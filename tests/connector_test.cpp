@@ -11,9 +11,8 @@
 /**
  * Module dependencies
  */
-#include <iostream>
-#include <assert.h>
-using namespace std;
+#include "../src/Helper/Help.h"
+#include "../src/Sockets/Socket.h"
 
 /**
  * @brief Connector test
@@ -24,8 +23,47 @@ using namespace std;
  */
 int main(int argc, char const *argv[])
 {
-    assert(argc > 0);
+     Help help;
+     if (argc != 4)
+     {
+          help.Display(help.Usage());
+     }
+     else
+     {
+          char *hostName = (char *)argv[1];
+          int portNumber = strtol(argv[2], NULL, 10);
+          char *message = (char *)argv[3];
 
-    cout << "\n💯  All assert passed!" << endl;
-    return 0;
+          IpAddress ipAddress(hostName);
+          IpEndPoint ipEndPoint(ipAddress, portNumber);
+
+          Socket instance(AddressFamiliy::InterNetwork, SocketType::Stream, ProtocolType::Ip);
+          cout << "Current Time"
+               << "\t"
+               << "Connector"
+               << "\t"
+                  "Status"
+               << endl;
+          cout << "----------"
+               << "\t"
+               << "----------"
+               << "\t"
+               << "----------" << endl;
+          cout << time(0) << "\t" << instance.Id() << "\t\t"
+               << "Create" << endl;
+
+          SocketStatus socketStatus = instance.Connect(ipEndPoint);
+          cout << time(0) << "\t" << instance.Id() << "\t\t"
+               << "Connect" << endl;
+          int sendStatus = instance.Send(message);
+          cout << time(0) << "\t" << instance.Id() << "\t\t"
+               << "Send" << endl;
+          int receiveStatus = instance.Receive();
+          cout << time(0) << "\t" << instance.Id() << "\t\t"
+               << "Receive" << endl;
+          char *data = instance.Data();
+          cout << time(0) << "\t" << instance.Id() << "\t\t"
+               << data << endl;
+     }
+     return 0;
 }

@@ -11,8 +11,8 @@
 /**
  * Module dependencies
  */
-#include "Help.cpp"
-#include "IpEndPoint.h"
+#include "Helper/Help.h"
+#include "Sockets/Socket.h"
 
 /**
  * @brief Connector test
@@ -23,14 +23,31 @@
  */
 int main(int argc, char const *argv[])
 {
-    Help help;
-    if (argc != 3)
-    {
-        help.Display(help.Welcome());
-    }
-    else
-    {
-        IpEndPoint parameter = help.GetParameter(argv);
-    }
-    return 0;
+     int result = -1;
+
+     Help help;
+     if (argc != 4)
+     {
+          help.Display(help.Usage());
+     }
+     else
+     {
+          char *hostName = (char *)argv[1];
+          int portNumber = strtol(argv[2], NULL, 10);
+          char *message = (char *)argv[3];
+
+          IpAddress ipAddress(hostName);
+          IpEndPoint ipEndPoint(ipAddress, portNumber);
+
+          Socket instance(AddressFamiliy::InterNetwork, SocketType::Stream, ProtocolType::Ip);
+
+          SocketStatus socketStatus = instance.Connect(ipEndPoint);
+
+          int sendStatus = instance.Send(message);
+
+          int receiveStatus = instance.Receive();
+
+          result = receiveStatus;
+     }
+     return result;
 }
