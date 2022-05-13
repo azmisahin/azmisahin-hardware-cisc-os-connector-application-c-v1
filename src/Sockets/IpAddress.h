@@ -70,7 +70,7 @@ IpAddress::IpAddress()
 IpAddress::IpAddress(char *value)
 {
     // define ip address octet
-    unsigned char octet[4];
+    unsigned int octet[4];
 
     // split address octet
     sscanf(value, "%u.%u.%u.%u", &octet[0], &octet[1], &octet[2], &octet[3]);
