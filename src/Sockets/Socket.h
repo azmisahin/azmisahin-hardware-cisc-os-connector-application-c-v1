@@ -17,10 +17,11 @@
  */
 
 #include "AddressFamiliy.h"
-#include "IpAddress.h"
+//#include "IpAddress.h"
 #include "IpEndPoint.h"
 #include "ProtocolType.h"
 #include "SocketType.h"
+#include "SocketBase.h"
 
 /**
  * @brief managed interface for network access.
@@ -30,56 +31,47 @@ class Socket
 {
 private:
     /**
-     * @brief
+     * base
      */
-    AddressFamiliy _addressFamiliy;
-
-    /**
-     * @brief
-     */
-    SocketType _socketType;
-
-    /**
-     * @brief
-     */
-    ProtocolType _protocolType;
-
-    /**
-     * @brief
-     */
-    IpEndPoint _ipEndPoint;
-
-    /**
-     * @brief
-     */
-    char *_message;
-
-    /**
-     * @brief
-     */
-    char *_data;
-
-    /**
-     * @brief created socket number.
-     *
-     */
-    int _id;
+    SocketBase _base;
 
 public:
     /**
      * @brief
      *
      */
-    Socket(AddressFamiliy addressFamiliy, SocketType socketType, ProtocolType protocolType);
+    Socket()
+    {
+        _base = SocketBase();
+    };
+
+    /**
+     * @brief Destroy the Socket object
+     *
+     */
+    ~Socket(){
+
+    };
+
+    /**
+     * @brief
+     *
+     */
+    Socket(AddressFamiliy addressFamiliy, SocketType socketType, ProtocolType protocolType)
+    {
+        _base = SocketBase(addressFamiliy, socketType, protocolType);
+    };
 
     /**
      * @brief Establishes a connection to a remote host.
      *
      * @param ipEndPoint
-     * @return true
-     * @return false
+     * @return SocketStatus
      */
-    bool Connect(IpEndPoint ipEndPoint);
+    SocketStatus Connect(IpEndPoint ipEndPoint)
+    {
+        return _base.Connect(ipEndPoint.Address().ToChar(), ipEndPoint.PortNumber());
+    };
 
     /**
      * @brief Send a message
@@ -87,14 +79,20 @@ public:
      * @param char*
      * @return int
      */
-    int Send(const char *message);
+    int Send(char *message)
+    {
+        return _base.Send(message);
+    };
 
     /**
      * @brief Receive message
      *
      * @param int
      */
-    int Receive();
+    int Receive()
+    {
+        return _base.Receive();
+    }
 
     /**
      * @brief Socket id
@@ -103,39 +101,41 @@ public:
      */
     int Id()
     {
-        return _id;
+        return _base.Id();
     }
 
     /**
      * @brief
      */
-    AddressFamiliy AddressFamiliy()
+    AddressFamiliy getAddressFamiliy()
     {
-        return _addressFamiliy;
+        return (AddressFamiliy)_base.AddressFamiliy();
     }
 
     /**
      * @brief
      */
-    SocketType SocketType()
+    SocketType getSocketType()
     {
-        return _socketType;
+        return (SocketType)_base.SocketType();
     }
 
     /**
      * @brief
      */
-    ProtocolType ProtocolType()
+    ProtocolType getProtocolType()
     {
-        return _protocolType;
+        return (ProtocolType)_base.ProtocolType();
     }
 
     /**
      * @brief
      */
-    IpEndPoint IpEndPoint()
+    IpEndPoint RemoteIpEndPoint()
     {
-        return _ipEndPoint;
+        IpAddress ipAddress(_base.HostName());
+        IpEndPoint ipEndPoint(ipAddress, _base.PortNumber());
+        return ipEndPoint;
     }
 
     /**
@@ -143,7 +143,7 @@ public:
      */
     char *Message()
     {
-        return _message;
+        return _base.Message();
     }
 
     /**
@@ -151,13 +151,7 @@ public:
      */
     char *Data()
     {
-        return _data;
+        return _base.Data();
     }
-
-    /**
-     * @brief Destroy the Socket object
-     *
-     */
-    ~Socket();
 };
 #endif

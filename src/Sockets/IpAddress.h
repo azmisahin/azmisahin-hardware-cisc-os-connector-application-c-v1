@@ -41,11 +41,18 @@ public:
     /**
      */
     ~IpAddress();
+
     /**
      * IpAddress To String
      * @return string
      */
     string ToString();
+
+    /**
+     * IpAddress To Char
+     * @return char*
+     */
+    char *ToChar();
 };
 
 /**
@@ -95,6 +102,10 @@ IpAddress::~IpAddress()
 }
 #endif
 string IpAddress::ToString()
+{
+    return _number;
+}
+char *IpAddress::ToChar()
 {
     return _number;
 }
