@@ -10,9 +10,9 @@
  */
 
 #include "../../../src/Sockets/SocketBase.h"
+#include "../../../src/Sockets/IpAddress.h"
 #include "../../TestTool.h"
-#define IP "192.168.1.11"
-#define PORT 50001
+
 bool Constractor_AddressFamiliySpec()
 {
     SocketBase instance(2, 1, 0);
@@ -49,8 +49,8 @@ bool Constractor_ProtocolTypeSpec()
 bool CreateSpec()
 {
     SocketBase instance(2, 1, 0);
-    char *hostName = (char *)IP;
-    int portNumber = PORT;
+    char *hostName = (char *)A_ROOT_SERVER_NET;
+    int portNumber = DNS_PORT;
 
     bool expected = 1;
     bool actual = instance.Id();
@@ -63,8 +63,8 @@ bool ConnectSpec()
 {
     SocketBase instance(2, 1, 0);
 
-    char *hostName = (char *)IP;
-    int portNumber = PORT;
+    char *hostName = (char *)A_ROOT_SERVER_NET;
+    int portNumber = DNS_PORT;
 
     SocketStatus expected = SocketStatus::Connected;
     SocketStatus actual = instance.Connect(hostName, portNumber);
@@ -76,8 +76,8 @@ bool ConnectSpec()
 bool SendSpec()
 {
     SocketBase instance(2, 1, 0);
-    char *hostName = (char *)IP;
-    int portNumber = PORT;
+    char *hostName = (char *)A_ROOT_SERVER_NET;
+    int portNumber = DNS_PORT;
 
     char *message = (char *)"00000001";
 
@@ -93,8 +93,8 @@ bool SendSpec()
 bool DownSpec()
 {
     SocketBase instance(2, 1, 0);
-    char *hostName = (char *)IP;
-    int portNumber = PORT;
+    char *hostName = (char *)A_ROOT_SERVER_NET;
+    int portNumber = DNS_PORT;
 
     char *message = (char *)"00000001";
 
@@ -111,8 +111,8 @@ bool DownSpec()
 bool ReceiveSpec()
 {
     SocketBase instance(2, 1, 0);
-    char *hostName = (char *)IP;
-    int portNumber = PORT;
+    char *hostName = (char *)A_ROOT_SERVER_NET;
+    int portNumber = DNS_PORT;
 
     char *message = (char *)"00000001";
 
@@ -129,8 +129,8 @@ bool ReceiveSpec()
 bool IdSpec()
 {
     SocketBase instance(2, 1, 0);
-    char *hostName = (char *)"127.0.0.1";
-    int portNumber = 500001;
+    char *hostName = (char *)A_ROOT_SERVER_NET;
+    int portNumber = DNS_PORT;
 
     bool expected = 1;
     bool actual = instance.Id();

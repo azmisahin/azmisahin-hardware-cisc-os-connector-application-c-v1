@@ -15,7 +15,7 @@ bool IpEndPoint_constractorSpec()
 {
     char *value = (char *)"1";
     IpAddress ipAddress(value);
-    int portNumber = 500001;
+    int portNumber = DNS_PORT;
     IpEndPoint instance(ipAddress, portNumber);
 
     // assert
@@ -26,7 +26,7 @@ bool IpEndPoint_AddressSpec_ShouldNotEqual()
 {
     char *value = (char *)"1";
     IpAddress ipAddress(value);
-    int portNumber = 500001;
+    int portNumber = DNS_PORT;
     IpEndPoint instance(ipAddress, portNumber);
     string actual = instance.Address().ToString();
     string expected = ipAddress.ToString();
@@ -37,9 +37,9 @@ bool IpEndPoint_AddressSpec_ShouldNotEqual()
 
 bool IpEndPoint_AddressSpec_ShouldEqual()
 {
-    char *value = (char *)"127.0.0.1";
+    char *value = (char *)A_ROOT_SERVER_NET;
     IpAddress ipAddress(value);
-    int portNumber = 500001;
+    int portNumber = DNS_PORT;
     IpEndPoint instance(ipAddress, portNumber);
     string actual = instance.Address().ToString();
     string expected = ipAddress.ToString();
@@ -52,7 +52,7 @@ bool IpEndPoint_PortNumberSpec()
 {
     char *value = (char *)"1";
     IpAddress ipAddress(value);
-    int portNumber = 500001;
+    int portNumber = DNS_PORT;
     IpEndPoint instance(ipAddress, portNumber);
     int actual = instance.PortNumber();
     int expected = portNumber;

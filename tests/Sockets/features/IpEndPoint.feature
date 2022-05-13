@@ -9,4 +9,4 @@ Feature: IpEndPoint
 
         Examples:
             | ipAddres | portNumber | class      | result   |
-            | IpAddres | 50001      | IpEndPoint | ipAddres |
+            | IpAddres | 53         | IpEndPoint | ipAddres |

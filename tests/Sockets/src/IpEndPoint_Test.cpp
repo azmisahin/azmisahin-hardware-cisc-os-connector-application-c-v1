@@ -18,7 +18,7 @@ BOOST_AUTO_TEST_SUITE(IpEndPoint_Test)
 BOOST_AUTO_TEST_CASE(IpEndPoint_constractor)
 {
     IpAddress ipAddress = (char *)"1";
-    int portNumber = 500001;
+    int portNumber = DNS_PORT;
     IpEndPoint instance(ipAddress, portNumber);
 
     BOOST_CHECK(instance);
@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(IpEndPoint_constractor)
 BOOST_AUTO_TEST_CASE(IpEndPoint_Address)
 {
     IpAddress ipAddress = (char *)"1";
-    int portNumber = 500001;
+    int portNumber = DNS_PORT;
     IpEndPoint instance(ipAddress, portNumber);
     string actual = instance.Address().ToString();
     string expected = ipAddress.ToString();
@@ -36,7 +36,7 @@ BOOST_AUTO_TEST_CASE(IpEndPoint_Address)
 BOOST_AUTO_TEST_CASE(IpEndPoint_PortNumber)
 {
     IpAddress ipAddress = (char *)"1";
-    int portNumber = 500001;
+    int portNumber = DNS_PORT;
     IpEndPoint instance(ipAddress, portNumber);
     int actual = instance.PortNumber();
     int expected = portNumber;

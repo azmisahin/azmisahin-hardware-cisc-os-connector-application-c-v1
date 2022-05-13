@@ -11,6 +11,9 @@
 #ifndef IPADDRESS_H
 #define IPADDRESS_H
 
+#define A_ROOT_SERVER_NET "198.41.0.4"
+#define DNS_PORT 53
+
 /**
  * module dependencies
  */

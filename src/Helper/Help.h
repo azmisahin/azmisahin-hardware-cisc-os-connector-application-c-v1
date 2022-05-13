@@ -105,6 +105,10 @@ Usage\n\
 \n\
 You can access an active remote server and its port.\n\
 \n\
+Ecample\n\
+\n\
+    connector 198.41.0.4 53 0 \n\
+\n\
 Run 'connector --help' for more information.\n\
 ";
 }

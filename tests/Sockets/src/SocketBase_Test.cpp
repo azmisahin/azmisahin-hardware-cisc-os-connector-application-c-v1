@@ -10,6 +10,7 @@
  */
 
 #include "../../../src/Sockets/SocketBase.h"
+#include "../../../src/Sockets/IpAddress.h"
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MODULE SocketBaseTest
 #include <boost/test/unit_test.hpp>
@@ -49,8 +50,8 @@ BOOST_AUTO_TEST_CASE(Connect)
 {
     SocketBase instance(2, 1, 0);
 
-    char *hostName = "127.0.0.1";
-    int portNumber = 500001;
+    char *hostName = A_ROOT_SERVER_NET;
+    int portNumber = DNS_PORT;
 
     bool expected = true;
     bool actual = instance.Connect(hostName, portNumber);
@@ -61,8 +62,8 @@ BOOST_AUTO_TEST_CASE(Connect)
 BOOST_AUTO_TEST_CASE(Send)
 {
     SocketBase instance(2, 1, 0);
-    char *hostName = "127.0.0.1";
-    int portNumber = 500001;
+    char *hostName = A_ROOT_SERVER_NET;
+    int portNumber = DNS_PORT;
 
     char *message = "00000001";
 
@@ -75,8 +76,8 @@ BOOST_AUTO_TEST_CASE(Send)
 BOOST_AUTO_TEST_CASE(Receive)
 {
     SocketBase instance(2, 1, 0);
-    char *hostName = "127.0.0.1";
-    int portNumber = 500001;
+    char *hostName = A_ROOT_SERVER_NET;
+    int portNumber = DNS_PORT;
 
     char *message = "00000001";
     instance.Send(message);
@@ -91,8 +92,8 @@ BOOST_AUTO_TEST_CASE(Receive)
 BOOST_AUTO_TEST_CASE(Id)
 {
     SocketBase instance(2, 1, 0);
-    char *hostName = "127.0.0.1";
-    int portNumber = 500001;
+    char *hostName = A_ROOT_SERVER_NET;
+    int portNumber = DNS_PORT;
 
     bool expected = 1;
     bool actual = instance.Id();

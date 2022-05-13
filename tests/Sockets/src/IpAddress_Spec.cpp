@@ -11,12 +11,11 @@
 
 #include "../../../src/Sockets/IpAddress.h"
 #include "../../TestTool.h"
-
 bool ToStringSpec()
 {
-    char *_parameters = (char *)"127.0.0.1";
+    char *_parameters = (char *)A_ROOT_SERVER_NET;
     IpAddress instance(_parameters);
-    string expected = "127.0.0.1";
+    string expected = A_ROOT_SERVER_NET;
     string actual = instance.ToString();
 
     // assert
