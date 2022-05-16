@@ -1,6 +1,8 @@
 # Introduction 
 emulation of risc-based architectures with a cisc architecture.
 
+[![Build status](https://dev.azure.com/azmisahin-github/azmisahin-hardware-cisc-os-connector-application-c-v1/_apis/build/status/azmisahin-hardware-cisc-os-connector-application-c-v1-CI)](https://dev.azure.com/azmisahin-github/azmisahin-hardware-cisc-os-connector-application-c-v1/_build/latest?definitionId=29)
+
 # Getting Started
 TO DO: Things to do when getting started on this project.
 - [Documentation](docs/README.md).
