@@ -1,5 +1,5 @@
 # base operation system image
-FROM ubuntu:latest AS production
+FROM mcr.microsoft.com/windows/servercore:ltsc2019 as production
 
 # Metadata indicating an image maintainer.
 LABEL maintainer="Azmi ŞAHİN <azmisahin@outlook.com>"
@@ -39,20 +39,20 @@ WORKDIR ${WORK_DIR}
 COPY . .
 
 # install project dependencies
-RUN apt-get update
-RUN apt-get -y install build-essential
-RUN apt-get -y install clang 
-RUN apt-get -y install cmake
+# update
+# install build tools
+# install clang 
+# install cmake
 
 # build
-RUN mkdir ${BUILD_DIR} && \
-    cd ${BUILD_DIR} && \
-    cmake .. &&\
-    make &&\
-    mkdir ${DIST_DIR} && \
-    mkdir ${DIST_DIR}_test && \
-    cp ./${NAME} ${DIST_DIR} && \
-    cp ./${NAME}_test ${DIST_DIR}_test
+RUN mkdir %BUILD_DIR% && \
+    cd %BUILD_DIR% && \
+    echo cmake .. &&\
+    echo make &&\
+    mkdir %DIST_DIR% && \
+    mkdir %DIST_DIR%_test && \
+    echo copy ./%NAME%.exe %DIST_DIR% && \
+    echo copy ./%NAME%_test.exe %DIST_DIR%_test.exe
 
 # test
-CMD ["bash", "-c", "${WORK_DIR}/${BUILD_DIR}/${DIST_DIR}_test/${NAME}_test ${REMOTE_IP_ADDRESS} ${REMOTE_PORT} \"${CLIENT_MESSAGE}\""]
+RUN echo %WORK_DIR%/%BUILD_DIR%/%DIST_DIR%_test/%NAME%_test.exe %REMOTE_IP_ADDRESS% %REMOTE_PORT% "%CLIENT_MESSAGE%"

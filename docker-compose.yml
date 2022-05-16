@@ -36,4 +36,4 @@ services:
     networks:
       default: null
     restart: "no"
-    tty: false
+    tty: true
