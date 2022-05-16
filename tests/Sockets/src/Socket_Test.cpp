@@ -14,6 +14,10 @@
 #define BOOST_TEST_MODULE SocketTest
 #include <boost/test/unit_test.hpp>
 
+// define test environment
+char *REMOTE_IP_ADDRESS = A_ROOT_SERVER_NET;
+int REMOTE_PORT = strtol(DNS_PORT, NULL, 10);
+
 BOOST_AUTO_TEST_SUITE(Socket_Suite)
 BOOST_AUTO_TEST_CASE(Constractor_AddressFamiliy)
 {
@@ -44,8 +48,11 @@ BOOST_AUTO_TEST_CASE(Constractor_ProtocolType)
 
 BOOST_AUTO_TEST_CASE(Connect)
 {
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
+
     Socket instance(AddressFamiliy::InterNetwork, SocketType::Stream, ProtocolType::Ip);
-    IpEndPoint ipEndPoint(A_ROOT_SERVER_NET, DNS_PORT);
+    IpEndPoint ipEndPoint(hostName, portNumber);
     bool expected = true;
     bool actual = instance.Connect(ipEndPoint);
 
@@ -54,8 +61,11 @@ BOOST_AUTO_TEST_CASE(Connect)
 
 BOOST_AUTO_TEST_CASE(Send)
 {
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
+
     Socket instance(AddressFamiliy::InterNetwork, SocketType::Stream, ProtocolType::Ip);
-    IpEndPoint ipEndPoint(A_ROOT_SERVER_NET, DNS_PORT);
+    IpEndPoint ipEndPoint(hostName, portNumber);
     char *message = "00000001";
     bool expected = 1;
     bool actual = instance.Send(message);
@@ -65,8 +75,11 @@ BOOST_AUTO_TEST_CASE(Send)
 
 BOOST_AUTO_TEST_CASE(Receive)
 {
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
+
     Socket instance(AddressFamiliy::InterNetwork, SocketType::Stream, ProtocolType::Ip);
-    IpEndPoint ipEndPoint(A_ROOT_SERVER_NET, DNS_PORT);
+    IpEndPoint ipEndPoint(hostName, portNumber);
     char *message = "00000001";
     instance.Send(message);
     bool expected = 1;
@@ -78,8 +91,11 @@ BOOST_AUTO_TEST_CASE(Receive)
 
 BOOST_AUTO_TEST_CASE(Id)
 {
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
+
     Socket instance(AddressFamiliy::InterNetwork, SocketType::Stream, ProtocolType::Ip);
-    IpEndPoint ipEndPoint(A_ROOT_SERVER_NET, DNS_PORT);
+    IpEndPoint ipEndPoint(hostName, portNumber);
 
     bool expected = 1;
     bool actual = instance.Id();

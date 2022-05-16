@@ -11,8 +11,10 @@
 #ifndef IPADDRESS_H
 #define IPADDRESS_H
 
-#define A_ROOT_SERVER_NET "198.41.0.4"
-#define DNS_PORT 53
+#include <cstdlib>
+// make source codes suitable for devops production environment.
+#define A_ROOT_SERVER_NET std::getenv("REMOTE_IP_ADDRESS")
+#define DNS_PORT std::getenv("REMOTE_PORT")
 
 /**
  * module dependencies

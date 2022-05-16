@@ -7,7 +7,19 @@
 		// Update 'VARIANT' to pick an Debian / Ubuntu OS version: debian-11, debian-10, ubuntu-22.04, ubuntu-20.04, ubuntu-18.04
 		// Use Debian 11, Ubuntu 18.04 or Ubuntu 22.04 on local arm64/Apple Silicon
 		"args": {
-			"VARIANT": "debian-11"
+			// # os
+			"VARIANT": "debian-11",
+			// # product
+			"ENV": "development",
+			"NAME": "connector",
+			// # build
+			"WORK_DIR": "/connector",
+			"BUILD_DIR": "build",
+			"DIST_DIR": "dist",
+			// # application
+			"REMOTE_IP_ADDRESS": "198.41.0.4",
+			"REMOTE_PORT": "53",
+			"CLIENT_MESSAGE": "0"
 		}
 	},
 	"runArgs": [
@@ -21,12 +33,13 @@
 	"extensions": [
 		"ms-vscode.cpptools",
 		"ms-vscode.cmake-tools",
-		"alexkrechik.cucumberautocomplete"
+		"alexkrechik.cucumberautocomplete",
+		"ms-azuretools.vscode-docker"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "chmod +x ./install.sh && ./install.sh",
+	// "postCreateCommand": "chmod +x ./install.sh && ./install.sh",
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
 }

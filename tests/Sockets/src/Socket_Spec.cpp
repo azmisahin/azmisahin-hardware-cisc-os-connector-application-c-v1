@@ -12,6 +12,10 @@
 #include "../../../src/Sockets/Socket.h"
 #include "../../TestTool.h"
 
+// define test environment
+char *REMOTE_IP_ADDRESS = A_ROOT_SERVER_NET;
+int REMOTE_PORT = strtol(DNS_PORT, NULL, 10);
+
 bool Constractor_AddressFamiliySpec()
 {
     Socket instance(AddressFamiliy::InterNetwork, SocketType::Stream, ProtocolType::Ip);
@@ -47,8 +51,8 @@ bool Constractor_ProtocolTypeSpec()
 
 bool CreateSpec()
 {
-    char *hostName = (char *)A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
 
     Socket instance(AddressFamiliy::InterNetwork, SocketType::Stream, ProtocolType::Ip);
 
@@ -61,8 +65,8 @@ bool CreateSpec()
 
 bool ConnectSpec()
 {
-    char *hostName = (char *)A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
 
     IpAddress ipAddress(hostName);
     IpEndPoint ipEndPoint(ipAddress, portNumber);
@@ -78,8 +82,8 @@ bool ConnectSpec()
 
 bool SendSpec()
 {
-    char *hostName = (char *);
-    int portNumber = DNS_PORT;
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
 
     IpAddress ipAddress(hostName);
     IpEndPoint ipEndPoint(ipAddress, portNumber);
@@ -99,8 +103,8 @@ bool SendSpec()
 
 bool ReceiveSpec()
 {
-    char *hostName = (char *)A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
 
     IpAddress ipAddress(hostName);
     IpEndPoint ipEndPoint(ipAddress, portNumber);
@@ -122,8 +126,8 @@ bool ReceiveSpec()
 
 bool IdSpec()
 {
-    char *hostName = (char *)A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
 
     IpAddress ipAddress(hostName);
     IpEndPoint ipEndPoint(ipAddress, portNumber);

@@ -15,6 +15,10 @@
 #define BOOST_TEST_MODULE SocketBaseTest
 #include <boost/test/unit_test.hpp>
 
+// define test environment
+char *REMOTE_IP_ADDRESS = A_ROOT_SERVER_NET;
+int REMOTE_PORT = strtol(DNS_PORT, NULL, 10);
+
 BOOST_AUTO_TEST_SUITE(SocketBase_Suit)
 BOOST_AUTO_TEST_CASE(Constractor_AddressFamiliy)
 {
@@ -48,10 +52,10 @@ BOOST_AUTO_TEST_CASE(Constractor_ProtocolType)
 
 BOOST_AUTO_TEST_CASE(Connect)
 {
-    SocketBase instance(2, 1, 0);
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
 
-    char *hostName = A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
+    SocketBase instance(2, 1, 0);
 
     bool expected = true;
     bool actual = instance.Connect(hostName, portNumber);
@@ -61,9 +65,10 @@ BOOST_AUTO_TEST_CASE(Connect)
 
 BOOST_AUTO_TEST_CASE(Send)
 {
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
+
     SocketBase instance(2, 1, 0);
-    char *hostName = A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
 
     char *message = "00000001";
 
@@ -75,9 +80,10 @@ BOOST_AUTO_TEST_CASE(Send)
 
 BOOST_AUTO_TEST_CASE(Receive)
 {
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
+
     SocketBase instance(2, 1, 0);
-    char *hostName = A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
 
     char *message = "00000001";
     instance.Send(message);
@@ -91,9 +97,10 @@ BOOST_AUTO_TEST_CASE(Receive)
 
 BOOST_AUTO_TEST_CASE(Id)
 {
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
+
     SocketBase instance(2, 1, 0);
-    char *hostName = A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
 
     bool expected = 1;
     bool actual = instance.Id();
