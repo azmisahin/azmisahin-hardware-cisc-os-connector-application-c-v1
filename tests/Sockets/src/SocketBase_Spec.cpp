@@ -13,6 +13,10 @@
 #include "../../../src/Sockets/IpAddress.h"
 #include "../../TestTool.h"
 
+// define test environment
+char *REMOTE_IP_ADDRESS = A_ROOT_SERVER_NET;
+int REMOTE_PORT = strtol(DNS_PORT, NULL, 10);
+
 bool Constractor_AddressFamiliySpec()
 {
     SocketBase instance(2, 1, 0);
@@ -49,8 +53,6 @@ bool Constractor_ProtocolTypeSpec()
 bool CreateSpec()
 {
     SocketBase instance(2, 1, 0);
-    char *hostName = (char *)A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
 
     bool expected = 1;
     bool actual = instance.Id();
@@ -61,10 +63,10 @@ bool CreateSpec()
 
 bool ConnectSpec()
 {
-    SocketBase instance(2, 1, 0);
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
 
-    char *hostName = (char *)A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
+    SocketBase instance(2, 1, 0);
 
     SocketStatus expected = SocketStatus::Connected;
     SocketStatus actual = instance.Connect(hostName, portNumber);
@@ -75,9 +77,10 @@ bool ConnectSpec()
 
 bool SendSpec()
 {
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
+
     SocketBase instance(2, 1, 0);
-    char *hostName = (char *)A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
 
     char *message = (char *)"00000001";
 
@@ -92,9 +95,10 @@ bool SendSpec()
 
 bool DownSpec()
 {
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
+
     SocketBase instance(2, 1, 0);
-    char *hostName = (char *)A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
 
     char *message = (char *)"00000001";
 
@@ -110,9 +114,10 @@ bool DownSpec()
 
 bool ReceiveSpec()
 {
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
+
     SocketBase instance(2, 1, 0);
-    char *hostName = (char *)A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
 
     char *message = (char *)"00000001";
 
@@ -128,9 +133,10 @@ bool ReceiveSpec()
 
 bool IdSpec()
 {
+    char *hostName = REMOTE_IP_ADDRESS;
+    int portNumber = REMOTE_PORT;
+
     SocketBase instance(2, 1, 0);
-    char *hostName = (char *)A_ROOT_SERVER_NET;
-    int portNumber = DNS_PORT;
 
     bool expected = 1;
     bool actual = instance.Id();

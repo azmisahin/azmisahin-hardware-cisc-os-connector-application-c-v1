@@ -4,6 +4,20 @@
 ARG VARIANT="bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/cpp:0-${VARIANT}
 
+# product arguments
+ARG ENV="production"
+ARG NAME="connector"
+
+# default arguments for build
+ARG WORK_DIR="/connector"
+ARG BUILD_DIR="build"
+ARG DIST_DIR="dist"
+
+# default arguments for application
+ARG REMOTE_IP_ADDRESS="198.41.0.4"
+ARG REMOTE_PORT="53"
+ARG CLIENT_MESSAGE="0"
+
 # [Optional] Install CMake version different from what base image has already installed. 
 # CMake reinstall choices: none, 3.21.5, 3.22.2, or versions from https://cmake.org/download/
 ARG REINSTALL_CMAKE_VERSION_FROM_SOURCE="none"
@@ -31,3 +45,19 @@ RUN sudo apt-get -y install libboost-all-dev
 
 # install Ruby Gemfile
 RUN sudo gem install bundler
+
+# set environments
+
+# product environment
+ENV ENV=${ENV}
+ENV NAME=${NAME}
+
+# default envionment for build
+ENV WORK_DIR=${WORK_DIR}
+ENV BUILD_DIR=${BUILD_DIR}
+ENV DIST_DIR=${DIST_DIR}
+
+# default environment for application
+ENV REMOTE_IP_ADDRESS=${REMOTE_IP_ADDRESS}
+ENV REMOTE_PORT=${REMOTE_PORT}
+ENV CLIENT_MESSAGE=${CLIENT_MESSAGE}

@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  application:
+    build:
+      context: .
+      # load operating system container
+      dockerfile: Dockerfile.${CONTAINER}
+      args:
+        # build
+        NAME: ${NAME}
+        WORK_DIR: ${WORK_DIR}
+        BUILD_DIR: ${BUILD_DIR}
+        DIST_DIR: ${DIST_DIR}
+
+        # application
+        REMOTE_IP_ADDRESS: ${REMOTE_IP_ADDRESS}
+        REMOTE_PORT: ${REMOTE_PORT}
+        CLIENT_MESSAGE: ${CLIENT_MESSAGE}
+      labels:
+        com.azmisahin.description: ${NAME}
+        com.azmisahin.department: "DEVOPS"
+      # stage
+      target: ${ENV}
+    container_name: ${NAME}-${CONTAINER}
+    environment:
+      # build
+      NAME: ${NAME}
+      WORK_DIR: ${WORK_DIR}
+      BUILD_DIR: ${BUILD_DIR}
+      DIST_DIR: ${DIST_DIR}
+
+      # application
+      REMOTE_IP_ADDRESS: ${REMOTE_IP_ADDRESS}
+      REMOTE_PORT: ${REMOTE_PORT}
+      CLIENT_MESSAGE: ${CLIENT_MESSAGE}
+    networks:
+      default: null
+    restart: "no"
+    tty: false
